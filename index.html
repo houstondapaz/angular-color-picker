@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Color Picker</title>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="dist/css/color-picker.min.css" />
+
+		<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+		<script type="text/javascript" src="dist/js/color-picker.min.js"></script>
+        <script type="text/javascript">
+            angular.module('angularColorPicker').controller('colorController', ['$scope',
+                function($scope){
+                    $scope.color;
+                }
+            ]);
+        </script>
+	</head>
+	<body ng-app="angularColorPicker">
+        <div ng-controller="colorController">
+		    <color-picker topic="'picker'" mode="'HSL'" color="color"></color-picker>
+        </div>
+	</body>
+</html>

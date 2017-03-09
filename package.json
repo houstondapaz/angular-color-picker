@@ -1,0 +1,34 @@
+{
+  "name": "color-picker-angular",
+  "version": "0.0.1",
+  "description": "Angular (1.x) color-picker directive, based on Mozilla Color picker tool",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/houstondapaz/angular-color-picker.git"
+  },
+  "keywords": [
+    "angular",
+    "color-picker",
+    "directive"
+  ],
+  "author": "Houston da Paz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/houstondapaz/angular-color-picker/issues"
+  },
+  "homepage": "https://github.com/houstondapaz/angular-color-picker#readme",
+  
+  "dependencies": {
+    "angular": "^1.6.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^2.1.0"
+  }
+}
