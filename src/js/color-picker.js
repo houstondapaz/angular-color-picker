@@ -817,44 +817,45 @@ var UIColorPicker = (function UIColorPicker() {
 	/*************************************************************************/
 	//							Set Picker Properties
 	/*************************************************************************/
-	function setMyColor(color) {
-		if (color instanceof Color !== true) {
-			console.log('Typeof parameter not Color');
-			return;
-		}
-
-		if (color.format !== this.picker_mode) {
-			color.setFormat(this.picker_mode);
-			color.updateHSX();
-		}
-
-		this.color.copy(color);
-		this.updateHuePicker();
-		this.updatePickerPosition();
-		this.updatePickerBackground();
-		this.updateAlphaPicker();
-		this.updateAlphaGradient();
-		this.updatePreviewColor();
-
-		this.notify('red', this.color.r);
-		this.notify('green', this.color.g);
-		this.notify('blue', this.color.b);
-
-		this.notify('hue', this.color.hue);
-		this.notify('saturation', this.color.saturation);
-		this.notify('value', this.color.value);
-		this.notify('lightness', this.color.lightness);
-
-		this.notify('alpha', this.color.a);
-		this.notify('hexa', this.color.getHexa());
-		notify(this.topic, this.color);
-	};
 
 	ColorPicker.prototype.setColor = function setColor(color) {
 		var _this = this;
 
+		function setMyColor() {
+			if (color instanceof Color !== true) {
+				console.log('Typeof parameter not Color');
+				return;
+			}
+
+			if (color.format !== this.picker_mode) {
+				color.setFormat(this.picker_mode);
+				color.updateHSX();
+			}
+
+			this.color.copy(color);
+			this.updateHuePicker();
+			this.updatePickerPosition();
+			this.updatePickerBackground();
+			this.updateAlphaPicker();
+			this.updateAlphaGradient();
+			this.updatePreviewColor();
+
+			this.notify('red', this.color.r);
+			this.notify('green', this.color.g);
+			this.notify('blue', this.color.b);
+
+			this.notify('hue', this.color.hue);
+			this.notify('saturation', this.color.saturation);
+			this.notify('value', this.color.value);
+			this.notify('lightness', this.color.lightness);
+
+			this.notify('alpha', this.color.a);
+			this.notify('hexa', this.color.getHexa());
+			notify(this.topic, this.color);
+		};
+
 		setTimeout(function () {
-			setMyColor.apply(_this, color);
+			setMyColor.apply(_this);
 		});
 	};
 
