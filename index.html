@@ -13,14 +13,14 @@
 		<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
 		<script type="text/javascript" src="dist/js/color-picker.min.js"></script>
         <script type="text/javascript">
-            angular.module('angularColorPicker').controller('colorController', ['$scope',
+            angular.module('myModule', ['angularColorPicker']).controller('colorController', ['$scope',
                 function($scope){
                     $scope.color;
                 }
             ]);
         </script>
 	</head>
-	<body ng-app="angularColorPicker">
+	<body ng-app="myModule">
         <div ng-controller="colorController">
 		    <color-picker topic="'picker'" mode="'HSL'" color="color"></color-picker>
         </div>
