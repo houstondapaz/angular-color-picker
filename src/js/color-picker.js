@@ -71,6 +71,31 @@ var UIColorPicker = (function UIColorPicker() {
 		return color;
 	}
 
+	function getRelativeCoordinates(container, e) {
+		var pos = {}, offset = {}, ref;
+
+		ref = container.offsetParent;
+
+		pos.x = !!e.touches ? e.touches[0].pageX : e.pageX;
+		pos.y = !!e.touches ? e.touches[0].pageY : e.pageY;
+
+		offset.left = container.offsetLeft;
+		offset.top = container.offsetTop;
+
+		while (ref) {
+
+			offset.left += ref.offsetLeft;
+			offset.top += ref.offsetTop;
+
+			ref = ref.offsetParent;
+		}
+
+		return {
+			x: pos.x - offset.left,
+			y: pos.y - offset.top,
+		};
+	}
+
 	Color.prototype.copy = function copy(obj) {
 		if (obj instanceof Color !== true) {
 			console.log('Typeof parameter not Color');
@@ -550,8 +575,9 @@ var UIColorPicker = (function UIColorPicker() {
 	/*************************************************************************/
 
 	ColorPicker.prototype.updateColor = function updateColor(e) {
-		var x = e.pageX - this.picking_area.offsetLeft;
-		var y = e.pageY - this.picking_area.offsetTop;
+		var pos = getRelativeCoordinates(this.picking_area, e);
+		var x = pos.x;
+		var y = pos.y;
 		var picker_offset = 5;
 
 		// width and height should be the same
@@ -588,7 +614,8 @@ var UIColorPicker = (function UIColorPicker() {
 	};
 
 	ColorPicker.prototype.updateHueSlider = function updateHueSlider(e) {
-		var x = e.pageX - this.hue_area.offsetLeft;
+
+		var x = getRelativeCoordinates(this.hue_area, e).x;
 		var width = this.hue_area.clientWidth;
 
 		if (x < 0) x = 0;
@@ -603,7 +630,7 @@ var UIColorPicker = (function UIColorPicker() {
 	};
 
 	ColorPicker.prototype.updateAlphaSlider = function updateAlphaSlider(e) {
-		var x = e.pageX - this.alpha_area.offsetLeft;
+		var x = getRelativeCoordinates(this.alpha_area, e).x;
 		var width = this.alpha_area.clientWidth;
 
 		if (x < 0) x = 0;
