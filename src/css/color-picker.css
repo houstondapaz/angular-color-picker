@@ -3,10 +3,8 @@
  */
 
 .ui-color-picker {
-	width: 420px;
+	width: 430px;
 	margin: 0;
-	border: 1px solid #DDD;
-	background-color: #FFF;
 	display: table;
 
 	-moz-user-select: none;
