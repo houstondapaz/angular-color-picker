@@ -817,8 +817,7 @@ var UIColorPicker = (function UIColorPicker() {
 	/*************************************************************************/
 	//							Set Picker Properties
 	/*************************************************************************/
-
-	ColorPicker.prototype.setColor = function setColor(color) {
+	function setMyColor(color) {
 		if (color instanceof Color !== true) {
 			console.log('Typeof parameter not Color');
 			return;
@@ -849,6 +848,14 @@ var UIColorPicker = (function UIColorPicker() {
 		this.notify('alpha', this.color.a);
 		this.notify('hexa', this.color.getHexa());
 		notify(this.topic, this.color);
+	};
+
+	ColorPicker.prototype.setColor = function setColor(color) {
+		var _this = this;
+
+		setTimeout(function () {
+			setMyColor.apply(_this, color);
+		});
 	};
 
 	ColorPicker.prototype.setPickerMode = function setPickerMode(mode) {
