@@ -1,6 +1,6 @@
 {
   "name": "color-picker-angular",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Angular (1.x) color-picker directive, based on Mozilla Color picker tool",
   "main": "index.html",
   "scripts": {

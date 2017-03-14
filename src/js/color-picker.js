@@ -448,8 +448,8 @@ var UIColorPicker = (function UIColorPicker() {
 		this.node = node;
 		this.subscribers = [];
 
-		var type = options.mode;//this.node.getAttribute('data-mode');
-		var topic = options.topic;//this.node.getAttribute('data-topic');
+		var type = options.mode;
+		var topic = options.topic;
 
 		this.topic = topic;
 		this.picker_mode = (type === 'HSL') ? 'HSL' : 'HSV';
@@ -879,6 +879,7 @@ var UIColorPicker = (function UIColorPicker() {
 			return;
 
 		this.picker_mode = mode;
+		this.node.setAttribute('data-mode', this.picker_mode);
 		this.setColor(this.color);
 	};
 

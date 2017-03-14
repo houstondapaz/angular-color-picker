@@ -17,6 +17,8 @@ angular.module('angularColorPicker', [])
 
                 if ($scope.color)
                     picker.setColor($scope.color);
+                
+                picker.setPickerMode($scope.mode);
 
                 UIColorPicker.subscribe($scope.topic, function (value) {
                     $scope.color = value;
