@@ -381,6 +381,21 @@ var UIColorPicker = (function UIColorPicker() {
 		return value;
 	};
 
+	Color.prototype.getRGB = function getRGB(alpha) {
+
+		var rgb = '(' + this.r + ', ' + this.g + ', ' + this.b;
+		var a = '';
+		var v = '';
+		var x = parseFloat(alpha);
+		if (x !== 1) {
+			a = 'a';
+			v = ', ' + x;
+		}
+
+		var value = 'rgb' + a + rgb + v + ')';
+		return value;
+	};
+
 	Color.prototype.getHSLA = function getHSLA() {
 		if (this.format === 'HSV') {
 			var color = new Color(this);
