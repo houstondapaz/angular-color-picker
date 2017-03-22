@@ -443,8 +443,18 @@ var UIColorPicker = (function UIColorPicker() {
 	// Color Picker Class
 	/*====================*/
 
+	ColorPicker.prototype._initializeColor = function (options) {
+		if (options.color) {
+			var keys = Object.keys(this.color);
+			for (var i = 0; i < keys.length; i++)
+				this.color[keys[i]] = typeof options.color[keys[i]] != 'undefined' ? options.color[keys[i]] : this.color[keys[i]];
+		}
+	};
+
 	function ColorPicker(node, options) {
 		this.color = new Color();
+
+		this._initializeColor(options);
 		this.node = node;
 		this.subscribers = [];
 
@@ -869,6 +879,7 @@ var UIColorPicker = (function UIColorPicker() {
 			notify(this.topic, this.color);
 		};
 
+		setMyColor.apply(_this);
 		setTimeout(function () {
 			setMyColor.apply(_this);
 		});

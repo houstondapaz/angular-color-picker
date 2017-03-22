@@ -11,13 +11,10 @@ angular.module('angularColorPicker', [])
                 $element.addClass('ui-color-picker');
 
                 var element = $element[0];
-                var options = { topic: $scope.topic, mode: $scope.mode };
+                var options = { topic: $scope.topic, mode: $scope.mode, color: $scope.color };
 
                 var picker = new UIColorPicker.init(element, options);
 
-                if ($scope.color)
-                    picker.setColor($scope.color);
-                
                 picker.setPickerMode($scope.mode);
 
                 UIColorPicker.subscribe($scope.topic, function (value) {
