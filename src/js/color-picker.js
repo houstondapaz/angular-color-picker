@@ -214,7 +214,11 @@ var UIColorPicker = (function UIColorPicker() {
 		this.b = parseInt(value.substr(4, 2), 16);
 
 		this.alpha = 1;
-		this.RGBtoHSV();
+
+		if (this.format == 'HSV')
+			this.RGBtoHSV();
+		else
+			this.RGBtoHSL();
 	};
 
 	/*========== Conversion Methods ==========*/
